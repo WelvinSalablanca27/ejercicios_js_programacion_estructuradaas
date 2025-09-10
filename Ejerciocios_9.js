@@ -51,8 +51,46 @@ const removerDelInicio = () => {
 agregarAlFinal("Tarea A"); // Cola: ["Tarea A"]
 agregarAlFinal("Tarea B"); // Cola: ["Tarea A", "Tarea B"]
 agregarAlFinal("Tarea C"); // Cola: ["Tarea A", "Tarea B", "Tarea C"]
-
 removerDelInicio(); // Procesa "Tarea A", Cola: ["Tarea B", "Tarea C"]
 removerDelInicio(); // Procesa "Tarea B", Cola: ["Tarea C"]
 removerDelInicio(); // Procesa "Tarea C", Cola: []
 removerDelInicio(); // Cola vacía
+
+let colaMensajes = [];
+const tamanoMaximo = 5;
+
+const insertarAlFinal = (mensaje) => {
+  colaMensajes.push(mensaje);
+
+  if (colaMensajes.length > tamanoMaximo) {
+    const mensajeEliminado = colaMensajes.shift();
+    console.log(`Límite excedido. Eliminado: ${mensajeEliminado}. Cola actual: ${colaMensajes}`);
+  } else {
+    console.log(`Mensaje insertado: ${mensaje}. Cola actual: ${colaMensajes}`);
+  }
+};
+
+const extraerDelInicio = () => {
+  if (colaMensajes.length === 0) {
+    console.log("Cola vacía.");
+    return null;
+  }
+
+  const mensajeExtraido = colaMensajes.shift();
+  console.log(`Mensaje extraído: ${mensajeExtraido}. Cola actual: ${colaMensajes}`);
+  return mensajeExtraido;
+};
+
+insertarAlFinal("Mensaje 1"); // Cola: ["Mensaje 1"]
+insertarAlFinal("Mensaje 2"); // Cola: ["Mensaje 1", "Mensaje 2"]
+insertarAlFinal("Mensaje 3"); // Cola: ["Mensaje 1", "Mensaje 2", "Mensaje 3"]
+insertarAlFinal("Mensaje 4"); // Cola: ["Mensaje 1", "Mensaje 2", "Mensaje 3", "Mensaje 4"]
+insertarAlFinal("Mensaje 5"); // Cola: ["Mensaje 1", "Mensaje 2", "Mensaje 3", "Mensaje 4", "Mensaje 5"]
+
+insertarAlFinal("Mensaje 6"); 
+// Límite excedido → elimina "Mensaje 1"
+// Cola: ["Mensaje 2", "Mensaje 3", "Mensaje 4", "Mensaje 5", "Mensaje 6"]
+
+extraerDelInicio(); 
+// Extrae "Mensaje 2"
+// Cola: ["Mensaje 3", "Mensaje 4", "Mensaje 5", "Mensaje 6"]
