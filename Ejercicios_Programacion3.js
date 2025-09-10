@@ -175,12 +175,12 @@ const mostrarEdadSofia = () => universidad.facultades[0].carreras[1].estudiantes
 const mostrarPrimerHobbyDerechoPenal = () => universidad.facultades[1].carreras[0].estudiantes[0].hobbies[0];
 
 
-console.log(mostrarNombreUniversidad());       
-console.log(mostrarCalle());                    
-console.log(mostrarPrimeraFacultad());         
-console.log(mostrarSegundaCarreraPrimeraFacultad()); 
-console.log(mostrarPrimerEstudianteInformatica());   
-console.log(mostrarSegundoHobbyLaura());        
-console.log(mostrarEdadSofia());                
+console.log(mostrarNombreUniversidad());
+console.log(mostrarCalle());
+console.log(mostrarPrimeraFacultad());
+console.log(mostrarSegundaCarreraPrimeraFacultad());
+console.log(mostrarPrimerEstudianteInformatica());
+console.log(mostrarSegundoHobbyLaura());
+console.log(mostrarEdadSofia());
 console.log(mostrarPrimerHobbyDerechoPenal())
 
