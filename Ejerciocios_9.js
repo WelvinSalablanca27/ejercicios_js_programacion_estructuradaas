@@ -32,19 +32,19 @@ let colaTareas = [];
 
 // Accion agregar al final
 const agregarAlFinal = (tarea) => {
-    colaTareas.push(tarea);
-    console.log(`Tarea agregada: ${tarea}. Cola actual: ${colaTareas}`);
+  colaTareas.push(tarea);
+  console.log(`Tarea agregada: ${tarea}. Cola actual: ${colaTareas}`);
 };
 //accion para remover el inicio
 const removerDelInicio = () => {
-    if (colaTareas.length === 0) {
-        console.log("Cola vacía.");
-        return null;
-    }
+  if (colaTareas.length === 0) {
+    console.log("Cola vacía.");
+    return null;
+  }
 
-    const tareaProcesada = colaTareas.shift();
-    console.log(`Tarea procesada: ${tareaProcesada}. Cola actual: ${colaTareas}`);
-    return tareaProcesada;
+  const tareaProcesada = colaTareas.shift();
+  console.log(`Tarea procesada: ${tareaProcesada}. Cola actual: ${colaTareas}`);
+  return tareaProcesada;
 };
 
 // simulacion del proceso
@@ -87,10 +87,96 @@ insertarAlFinal("Mensaje 3"); // Cola: ["Mensaje 1", "Mensaje 2", "Mensaje 3"]
 insertarAlFinal("Mensaje 4"); // Cola: ["Mensaje 1", "Mensaje 2", "Mensaje 3", "Mensaje 4"]
 insertarAlFinal("Mensaje 5"); // Cola: ["Mensaje 1", "Mensaje 2", "Mensaje 3", "Mensaje 4", "Mensaje 5"]
 
-insertarAlFinal("Mensaje 6"); 
+insertarAlFinal("Mensaje 6");
 // Límite excedido → elimina "Mensaje 1"
 // Cola: ["Mensaje 2", "Mensaje 3", "Mensaje 4", "Mensaje 5", "Mensaje 6"]
 
-extraerDelInicio(); 
+extraerDelInicio();
 // Extrae "Mensaje 2"
-// Cola: ["Mensaje 3", "Mensaje 4", "Mensaje 5", "Mensaje 6"]
+// Cola: ["Mensaje 3", "Mensaje 4", "Mensaje 5", "Mensaje 6"
+
+
+// Arreglo para la cola
+let lineaEspera = [];
+
+// Acción para unir al final (flecha)
+const unirAlFinal = (persona) => {
+  lineaEspera.push(persona);
+  console.log('Persona unida: ${persona}. Linea actual: ${lineaEspera}');
+}
+// Acción para atender del inicio (flecha)
+const atenderDelInicio = () => {
+  if (lineaEspera.length === 0) {
+    console.log("Línea vacía, nadie para atender. ");
+    return null;
+  }
+  const personaAtendida = lineaEspera.shift();
+  console.log('Persona atendida: ${personaAtendida}. Linea actual: ${lineaEspera}');
+  return personaAtendida;
+};
+
+// Simulación del proceso
+unirAlFinal("Persona X");// Linea: ["Persona X" ]
+unirAlFinal("Persona Y");// Linea: ["Persona X", "Persona Y" ]
+unirAlFinal("Persona Z");// Linea: ["Persona X", "Persona Y", "Persona Z" ]
+atenderDelInicio();// Atiende "Persona X", Linea: ["Persona Y", "Persona Z"]
+atenderDelInicio();// Atiende "Persona Y", Línea: ["Persona Z"]
+atenderDelInicio();// Atiende "Persona Y", Línea: ["Persona Z"]
+atenderDelInicio();// Linea vacia
+
+
+// Arreglo para la pila
+let historialPaginas = [];
+
+// Acción para agregar pagina (flecha)
+const agregarUltimaPagina = (url) => {
+historialPaginas.push(url);
+console. log('Pagina visitada: ${url}. Historial: ${historialPaginas}' );
+};
+
+// Acción para retroceder (flecha)
+const retrocederPagina = ( ) => {
+if (historialPaginas. length === 0) {
+console. log("Historial vacío.");
+return null;
+}
+const pagina = historialPaginas.pop( );
+console. log('Retrocediendo a: ${pagina}. Historial: ${historialPaginas}');
+return pagina;
+};
+
+// Simulación del proceso
+agregarUltimaPagina("inicio.com");// Página visitada: inicio.com. Historial: [inicio.com]
+agregarUltimaPagina("articulos.com"); // Página visitada: articulos.com. Historial: [inicio.com, articulos.com]
+agregarUltimaPagina("detalles.com");// Pagina visitada: detalles.com. Historial: [inicio.com, articulos.com, detalles.com
+retrocederPagina();// Retrocediendo a: detalles.com. Historial: [inicio.com, articulos.com]
+retrocederPagina(); // Retrocediendo a: articulos.com. Historial: [iniciocom]
+
+// Arreglo para la pila
+let pilaNotificaciones = [];
+
+// Acción para mostrar notificación (flecha)
+const mostrarNotificacion = (mensaje) => {
+pilaNotificaciones.push(mensaje);
+console. log('Notificación: ${mensaje}. Pila: ${pilaNotificaciones}' );
+};
+
+// Acción para cerrar notificación (flecha)
+const cerrarNotificacion = ( ) => {
+if (pilaNotificaciones. length === 0) {
+console. log("No hay notificaciones.");
+return null;
+}
+
+const notificacion = pilaNotificaciones.pop( );
+console. log('Cerrada: ${notificacion}. Pila: ${pilaNotificaciones}' );
+return notificacion;
+};
+
+// Simulación del proceso
+mostrarNotificacion("Mensaje nuevo");// Notificación: Mensaje nuevo. Pila: [Mensaje nuevo]
+mostrarNotificacion("Batería baja");// Notificación: Batería baja. Pila: [Mensaje nuevo, Batería baja]
+mostrarNotificacion("Actualización");// Notificación: Actualización. Pila: [Mensaje nuevo, Batería baja, Actualizacion]
+cerrarNotificacion();// Cerrada: Actualización. Pila: [Mensaje nuevo, Batería baja]
+cerrarNotificacion();// Cerrada: Batería baja. Pila: [Mensaje nuevo]
+
