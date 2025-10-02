@@ -65,3 +65,34 @@ const resultado = todosConStock(productos);
 console.log(resultado);
 
 //Crea una función flecha que reciba el arreglo y verifique si al menos un producto pertenece a la categoría "Electrodomésticos".
+const hayElectrodomesticos = (productos) => productos.some(producto => producto.categoria === "Electrodomésticos");
+
+const resultados = hayElectrodomesticos(productos);
+console.log(resultados);
+
+//7. Crea una función flecha que reciba el arreglo y devuelva una nueva lista deproductos ordenada por precio de menor a mayor.
+const ordenarPorPrecio = (productos) => [productos].sort((a, b) => a.precio - b.precio);
+
+const productosPorPrecio = ordenarPorPrecio(productos);
+console.log(productosPorPrecio);
+
+//8. Crea una función flecha que reciba el arreglo y retorne los productosordenados por nombre en orden alfabético inverso.
+const ordenarPorNombreInverso = (productos) => [...productos].sort((a, b) => b.nombre.localeCompare(a.nombre));
+
+const productosPorNombreInverso = ordenarPorNombreInverso(productos);
+console.log(productosPorNombreInverso);
+
+//9. Crea una función flecha que reciba el arreglo y devuelva todos los productos cuyo stock sea menor a 10.
+const productosStockMenor10 = (productos) => productos.filter(producto => producto.stock < 10);
+
+const productosPocosStock = productosStockMenor10(productos);
+console.log(productosPocosStock);
+
+//Crea una función flecha que reciba el arreglo y obtenga el promedio de los precios de todos los productos.
+const promedioPrecios = (productos) => {
+  const total = productos.reduce((acum, producto) => acum + producto.precio, 0);
+  return total / productos.length;
+};
+
+const promedio = promedioPrecios(productos);
+console.log(promedio);
