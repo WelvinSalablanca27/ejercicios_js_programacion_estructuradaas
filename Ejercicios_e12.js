@@ -32,7 +32,7 @@ console.log("Por peso descendente:", ordenPesoDesc);
 const ordenTipoEdad = [...mascotas].sort((a, b) => {
     if (a.tipo === b.tipo) {
         return a.edad - b.edad;
-    }
+       }
     return a.tipo.localeCompare(b.tipo);
 });
 console.log("Por tipo y edad:", ordenTipoEdad);
